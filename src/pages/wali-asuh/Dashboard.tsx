@@ -57,6 +57,15 @@ export default function WaliAsuhDashboard() {
                     <p className="text-xs text-neutral-500 truncate">
                       Kelas {s.class} · {s.deltaScore >= 0 ? "Naik" : "Turun"} {Math.abs(s.deltaScore)} poin dari minggu lalu
                     </p>
+                    {s.factors.length > 0 && (
+                      <div className="flex flex-wrap gap-1 mt-1.5">
+                        {s.factors.map((f) => (
+                          <span key={f} className="text-[10px] px-1.5 py-0.5 rounded-full bg-neutral-100 text-neutral-500 font-medium">
+                            {f}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div className="flex items-center gap-3 shrink-0">

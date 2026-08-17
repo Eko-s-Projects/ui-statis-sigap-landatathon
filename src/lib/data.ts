@@ -138,3 +138,30 @@ export const riskTrendNational = [
   { week: "W32", tinggi: 47, sedang: 108, rendah: 966 },
   { week: "W33", tinggi: 50, sedang: 112, rendah: 959 },
 ]
+
+export const criticalPeriod = {
+  week: "W33",
+  note: "Lonjakan risiko tinggi terbesar terjadi pada minggu ke-33, bertepatan dengan periode pasca-libur pertengahan semester saat peserta didik baru kembali ke asrama.",
+}
+
+export const topFactorsNational = [
+  { code: "K2", label: "Menyampaikan keinginan pulang", dimension: "K", count: 187 },
+  { code: "B1", label: "Tampak sedih, cemas, atau mudah tersinggung", dimension: "B", count: 156 },
+  { code: "K6", label: "Frekuensi komunikasi dengan keluarga menurun", dimension: "K", count: 129 },
+  { code: "A2", label: "Kehadiran kegiatan asrama menurun", dimension: "A", count: 104 },
+  { code: "B3", label: "Menyendiri atau kurang berbaur dengan teman", dimension: "B", count: 91 },
+]
+
+export interface GapQuestion {
+  question: string
+  count: number
+  lastAsked: string
+  relatedTopic: string
+}
+
+export const gapRegister: GapQuestion[] = [
+  { question: "Bagaimana menangani penolakan makan berkelanjutan pada anak?", count: 6, lastAsked: "15 Agu 2026", relatedTopic: "Kesehatan & pola makan" },
+  { question: "Batas kapan kerinduan rumah dianggap memerlukan eskalasi klinis?", count: 5, lastAsked: "14 Agu 2026", relatedTopic: "Kesulitan adaptasi asrama" },
+  { question: "Cara mendampingi anak yang menyaksikan pertengkaran orang tua saat pulang ke rumah?", count: 4, lastAsked: "12 Agu 2026", relatedTopic: "Situasi keluarga" },
+  { question: "Bagaimana menangani konflik antar peserta didik berulang di kamar yang sama?", count: 3, lastAsked: "10 Agu 2026", relatedTopic: "Relasi sosial" },
+]

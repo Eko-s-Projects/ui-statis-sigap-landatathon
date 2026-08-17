@@ -106,9 +106,14 @@ export default function Simulasi() {
                     <SendHorizonal className="w-4 h-4" />
                   </Button>
                 </form>
-                <button onClick={() => setShowFeedback(true)} className="text-xs text-neutral-500 hover:text-teal-700">
-                  Akhiri sesi &amp; lihat umpan balik &rarr;
-                </button>
+                <Button
+                  variant="outline"
+                  onClick={() => setShowFeedback(true)}
+                  className="w-full border-teal-200 text-teal-700 hover:bg-teal-50 hover:text-teal-800"
+                >
+                  Akhiri Sesi &amp; Lihat Umpan Balik
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Button>
               </div>
             </Card>
           </div>

@@ -19,6 +19,26 @@ const dimensionTitles: Record<string, string> = {
   K: "Keterikatan & Kondisi Keluarga",
 }
 
+const scaleLabels = ["Tidak Pernah", "Jarang", "Kadang", "Sering", "Selalu"]
+
+function ScaleSlider({ code, label, defaultValue }: { code: string; label: string; defaultValue: number }) {
+  const [value, setValue] = useState(defaultValue)
+
+  return (
+    <div className="space-y-2">
+      <div className="flex items-center justify-between gap-2">
+        <label className="text-sm text-neutral-700">{code}. {label}</label>
+        <span className="text-xs font-medium text-teal-700 bg-teal-50 px-2 py-0.5 rounded-full shrink-0">{scaleLabels[value]}</span>
+      </div>
+      <Slider value={[value]} onValueChange={(v) => setValue(Array.isArray(v) ? v[0] : v)} max={4} step={1} />
+      <div className="flex justify-between text-[10px] text-neutral-400">
+        <span>Tidak Pernah</span>
+        <span>Selalu</span>
+      </div>
+    </div>
+  )
+}
+
 export default function Pemantauan() {
   const [saved, setSaved] = useState(false)
   const student = students[0]
@@ -82,24 +102,18 @@ export default function Pemantauan() {
                 <div className="grid sm:grid-cols-2 gap-x-8 gap-y-6">
                   <div>
                     <p className="text-xs font-semibold text-neutral-400 uppercase tracking-wide mb-3">A · {dimensionTitles.A}</p>
-                    <div className="space-y-4">
+                    <div className="space-y-5">
                       {scaleIndicators.filter((i) => i.dimension === "A").map((i) => (
-                        <div key={i.code} className="space-y-2">
-                          <label className="text-sm text-neutral-700">{i.code}. {i.label}</label>
-                          <Slider defaultValue={[i.code === "A2" ? 2 : 4]} max={4} step={1} />
-                        </div>
+                        <ScaleSlider key={i.code} code={i.code} label={i.label} defaultValue={i.code === "A2" ? 2 : 4} />
                       ))}
                     </div>
                   </div>
 
                   <div>
                     <p className="text-xs font-semibold text-neutral-400 uppercase tracking-wide mb-3">C · {dimensionTitles.C}</p>
-                    <div className="space-y-4">
+                    <div className="space-y-5">
                       {scaleIndicators.filter((i) => i.dimension === "C").map((i) => (
-                        <div key={i.code} className="space-y-2">
-                          <label className="text-sm text-neutral-700">{i.code}. {i.label}</label>
-                          <Slider defaultValue={[i.code === "C1" ? 3 : 1]} max={4} step={1} />
-                        </div>
+                        <ScaleSlider key={i.code} code={i.code} label={i.label} defaultValue={i.code === "C1" ? 3 : 1} />
                       ))}
                     </div>
                   </div>
